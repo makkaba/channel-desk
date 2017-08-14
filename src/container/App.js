@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginForm from './LoginForm';
+
 import * as firebase from '../config/firebase';
 import { login } from '../actions';
 import { connect } from 'react-redux';
@@ -7,8 +7,9 @@ import { Redirect } from 'react-router';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import PrivateRoute from './PrivateRoute';
-import Home from './Home';
+import PrivateRoute from '../helpers/PrivateRoute';
+import LoginForm from '../components/LoginForm';
+import Home from '../components/Home';
 import DashBoard from './DashBoard';
 
 /*
