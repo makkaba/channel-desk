@@ -11,22 +11,11 @@ class LoginForm extends Component{
         var fbProvider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithRedirect(fbProvider);
     }
-    logoutHandler(){
-        firebase.auth().signOut().then(function() {
-            // Sign-out successful.
-            // this.props.logout();
-        }, function(error) {
-        // An error happened.
-        });
-    }
     render(){
         return(
-        <div style={{display: 'inline'}}>
-           <Button onClick={()=>this.loginHandler()}>
-               로그인
-            </Button>
-            <Button onClick={()=>this.logoutHandler()}>
-               로그아웃
+        <div style={{display: 'inline-block'}}>
+           <Button raised color="primary" onClick={()=>this.loginHandler()}>
+               페이스북
             </Button>
         </div>
         );

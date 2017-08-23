@@ -4,11 +4,11 @@ const initialState = {
     user: ''
 };
 
-function login(state = initialState, action){
+function userReducer(state = initialState, action){
     switch(action.type){
         case LOGIN:
             return {
-                user: state.user
+                user: action.payload
             };
         case LOGOUT: 
             return {
@@ -19,4 +19,4 @@ function login(state = initialState, action){
     }
 }
 
-export default login;
+export default userReducer;

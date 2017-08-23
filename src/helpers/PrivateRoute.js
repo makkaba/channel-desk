@@ -5,9 +5,10 @@ import { Redirect, Route } from 'react-router';
 
 function PrivateRoute({ component: Component, user, ...rest}){
   console.log("private route. user:",user);
+  
   return (
     <Route {...rest} render={props => (
-      user ? (
+      user.user !== "" ? (
         <Component {...props}/>
       ) : (
         <Redirect to={{

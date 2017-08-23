@@ -44,9 +44,12 @@ class App extends Component{
 
         firebase.auth.onAuthStateChanged(function(user) {
             if (user) {
-                self.setState({loggedIn: true, user: user});
+              console.log('App recog user');
+                // self.setState({loggedIn: true, user: user});
+                self.props.onLogin(user);
+                // self.props.login({user});
             } else {
-                self.setState({loggedIn: false, user: ''});
+                //self.setState({loggedIn: false, user: ''});
             }
         });
         
@@ -82,15 +85,15 @@ class App extends Component{
     }
 
     render(){
-        const { loggedIn, user } = this.state;
-        console.log(loggedIn);
+        // const { loggedIn, user } = this.state;
+        //console.log(loggedIn);
         return (
                 <BrowserRouter>
                     <div>
                         <Switch>   
                             <Route exact path ='/' component={Home}/>
                             <Route exact path ='/login' component={Login}/>
-                            <PrivateRoute component={DashBoard} user={user} exact path='/dashboard' />
+                            <PrivateRoute component={DashBoard} user={this.props.user} exact path='/dashboard' />
                         </Switch>
                     </div>
                 </BrowserRouter>
@@ -98,5 +101,20 @@ class App extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
 
-export default connect( null, {login})(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: (user) => {
+      dispatch({
+        type: 'LOGIN',
+        payload: user
+      });
+    }
+  }
+}
+export default connect( mapStateToProps, mapDispatchToProps )(App);
