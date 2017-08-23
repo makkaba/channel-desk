@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import reset from '../styles/common/reset.css';
+
 import * as firebase from '../config/firebase';
 import { login } from '../actions';
 import { connect } from 'react-redux';
@@ -8,8 +10,10 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import PrivateRoute from '../helpers/PrivateRoute';
+import Navbar from '../components/Navbar';
 import LoginForm from '../components/LoginForm';
 import Home from '../components/Home';
+import Login from '../pages/Login';
 import DashBoard from './DashBoard';
 
 /*
@@ -83,16 +87,9 @@ class App extends Component{
         return (
                 <BrowserRouter>
                     <div>
-                        <div>
-                            <ul>
-                                <li><Link to='/'>홈</Link></li>    
-                                <li><Link to='/dashboard'>대쉬보드</Link></li>
-                            </ul>
-                            <LoginForm />
-                        </div>
-                        <Switch>
-                            
+                        <Switch>   
                             <Route exact path ='/' component={Home}/>
+                            <Route exact path ='/login' component={Login}/>
                             <PrivateRoute component={DashBoard} user={user} exact path='/dashboard' />
                         </Switch>
                     </div>

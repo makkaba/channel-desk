@@ -1,0 +1,20 @@
+
+
+.nav-outer{
+    width: 100%;
+    text-align: center;
+}
+.nav-inner{
+    display: flex;
+    flex-direction: row;
+    max-width: 920px;
+    margin: auto;
+}
+
+.nav-left{
+    flex: 1;
+}
+.nav-right{
+    text-align: right;
+    flex: 11;
+}

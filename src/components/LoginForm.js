@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {login} from '../actions';
-import { Button } from 'react-bootstrap';
+import {Button} from 'material-ui';
 import firebase from 'firebase';
 
 
@@ -21,7 +21,7 @@ class LoginForm extends Component{
     }
     render(){
         return(
-        <div>
+        <div style={{display: 'inline'}}>
            <Button onClick={()=>this.loginHandler()}>
                로그인
             </Button>
