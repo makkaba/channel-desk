@@ -8,12 +8,15 @@
   "dependencies": {
     "axios": "^0.16.2",
     "firebase": "^4.2.0",
+    "material-ui": "next",
+    "material-ui-icons": "^1.0.0-beta.5",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "typeface-roboto": "^0.0.35"
   },
   "scripts": {
     "start": "react-scripts start",
