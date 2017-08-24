@@ -3,11 +3,9 @@ import * as firebase from '../config/firebase';
 import LoginForm from './LoginForm';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {withStyles} from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
+import { withStyles } from 'material-ui/styles';
+import { AppBar, Toolbar, Button, Grid, Avatar } from 'material-ui';
+
 import styles from '../styles/components/navbar.css';
 
 class Navbar extends Component{
@@ -26,6 +24,7 @@ class Navbar extends Component{
     });
   }
   render(){
+    const user = this.props.user.user;
     console.log("NAVBAR:",this.props.user);
     return (
             <AppBar position="static" color="default">
@@ -38,9 +37,9 @@ class Navbar extends Component{
                             <div className="nav-right">
                                 <Link to='/'><Button>홈</Button></Link>
                                 <Link to='/dashboard'><Button>대시보드</Button></Link>
-                                { this.props.user.user === "" ? 
+                                { user === "" ? 
                                   <Link to='/login'><Button>로그인</Button></Link>
-                                  : <Button onClick={()=>this.logoutHandler()}>로그아웃</Button>
+                                  : <div className="avatar-outer"><div className="avatar-inner"><Avatar alt="display name" src={user.photoURL}></Avatar><Button onClick={()=>this.logoutHandler()}>로그아웃</Button></div></div>
                                 }
                                 
                             </div>

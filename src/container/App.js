@@ -10,9 +10,9 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import PrivateRoute from '../helpers/PrivateRoute';
+import PublicRoute from '../helpers/PublicRoute';
 import Navbar from '../components/Navbar';
 import LoginForm from '../components/LoginForm';
-import Home from '../components/Home';
 import Login from '../pages/Login';
 import DashBoard from './DashBoard';
 
@@ -28,7 +28,6 @@ class App extends Component{
     constructor(){
         super();
         this.state  = {
-            loggedIn: false,
             user: ''
         };
         console.log('constructor');
@@ -44,11 +43,18 @@ class App extends Component{
 
         firebase.auth.onAuthStateChanged(function(user) {
             if (user) {
-              console.log('App recog user');
+                //debugger;
                 // self.setState({loggedIn: true, user: user});
+                /*
+                user.photoURL
+                user.displayName
+                user.
+                */
                 self.props.onLogin(user);
+                
                 // self.props.login({user});
             } else {
+              
                 //self.setState({loggedIn: false, user: ''});
             }
         });
@@ -91,7 +97,7 @@ class App extends Component{
                 <BrowserRouter>
                     <div>
                         <Switch>   
-                            <Route exact path ='/' component={Home}/>
+                            <PublicRoute component={DashBoard} user={this.props.user} exact path='/' />
                             <Route exact path ='/login' component={Login}/>
                             <PrivateRoute component={DashBoard} user={this.props.user} exact path='/dashboard' />
                         </Switch>
