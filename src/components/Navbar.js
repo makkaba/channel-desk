@@ -11,10 +11,18 @@ import Grid from 'material-ui/Grid';
 import styles from '../styles/components/navbar.css';
 
 class Navbar extends Component{
-  onLogoutClick(){
-    firebase.auth.signOut().then(function() {
-    //signout
-    }, function(error) {
+  constructor(props){
+    super(props);
+    this.logoutHandler = this.logoutHandler.bind(this);
+  }
+  logoutHandler(){
+    
+    // var that = this;
+    firebase.auth.signOut().then(() => {
+      //signout
+      this.props.onLogoutClick();
+      // that.props.onLogoutClick();
+    }, (error)=>{
     });
   }
   render(){
@@ -32,7 +40,7 @@ class Navbar extends Component{
                                 <Link to='/dashboard'><Button>대시보드</Button></Link>
                                 { this.props.user.user === "" ? 
                                   <Link to='/login'><Button>로그인</Button></Link>
-                                  : <Button onClick={()=>this.onLogoutClick()}>로그아웃</Button>
+                                  : <Button onClick={()=>this.logoutHandler()}>로그아웃</Button>
                                 }
                                 
                             </div>
@@ -58,7 +66,5 @@ const mapDispatchToProps = (dispatch) =>{
     }
   }
 }
-  
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
