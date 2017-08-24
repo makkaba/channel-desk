@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router';
-import * as firebase from '../config/firebase';
+import app from '../config/firebase';
 import LoginForm from './LoginForm';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,7 +21,7 @@ class Navbar extends Component{
   }
   logoutHandler(){
       //firebase 모듈로 분리가 이미 되어있는 상태
-    firebase.auth.signOut().then(() => {
+    app.auth().signOut().then(() => {
       this.props.onLogoutClick();
       this.setState({ redirectToReferrer: true });
     }, (error)=>{

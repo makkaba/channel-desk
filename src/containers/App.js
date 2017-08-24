@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import reset from '../styles/common/reset.css';
 
-import * as firebase from '../config/firebase';
+import app from '../config/firebase';
 import { login } from '../actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
@@ -41,7 +41,7 @@ class App extends Component{
        */
         var self = this;
 
-        firebase.auth.onAuthStateChanged(function(user) {
+        app.auth().onAuthStateChanged(function(user) {
             if (user) {
                 //debugger;
                 // self.setState({loggedIn: true, user: user});
