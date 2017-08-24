@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router';
 import * as firebase from '../config/firebase';
 import LoginForm from './LoginForm';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
@@ -6,26 +7,39 @@ import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { AppBar, Toolbar, Button, Grid, Avatar } from 'material-ui';
 
+
+
 import styles from '../styles/components/navbar.css';
 
 class Navbar extends Component{
   constructor(props){
     super(props);
+    this.state = {
+        redirectToReferrer: false
+    };
     this.logoutHandler = this.logoutHandler.bind(this);
   }
   logoutHandler(){
-    
-    // var that = this;
+      //firebase 모듈로 분리가 이미 되어있는 상태
     firebase.auth.signOut().then(() => {
-      //signout
       this.props.onLogoutClick();
-      // that.props.onLogoutClick();
+      this.setState({ redirectToReferrer: true });
     }, (error)=>{
     });
   }
+  
   render(){
-    const user = this.props.user.user;
-    console.log("NAVBAR:",this.props.user);
+    //   debugger;
+      console.log(this.state);
+      const user = this.props.user.user;
+      const { redirectToReferrer } = this.state;
+    
+    
+    if( redirectToReferrer ) {
+        return (
+            <Redirect to={'/'} />
+        );
+    }
     return (
             <AppBar position="static" color="default">
                 <Toolbar>
@@ -50,13 +64,13 @@ class Navbar extends Component{
     );
   }
 }
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
   return {
     user: state.user
   };
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
   return {
     onLogoutClick: () => {
       dispatch({

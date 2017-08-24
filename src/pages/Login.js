@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import Navbar from '../components/Navbar';
-import Center from '../container/Center';
+import Center from '../containers/Center';
 import Grid from 'material-ui/Grid';
 import loginStyles from '../styles/common/index.css';
 
