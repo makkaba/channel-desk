@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar';
 import LoginForm from './LoginForm';
 
-class Home extends Component{
+class Landing extends Component{
     render(){
         return(
             <div>
@@ -12,4 +12,4 @@ class Home extends Component{
         );
     }
 }
-export default Home;
+export default Landing;
