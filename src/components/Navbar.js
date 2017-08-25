@@ -41,26 +41,28 @@ class Navbar extends Component{
         );
     }
     return (
-            <AppBar position="static" color="default">
-                <Toolbar>
-                    <div className="nav-outer">
-                        <div className="nav-inner">
-                            <div className="nav-left">
-                                <Button>lab</Button>
-                            </div>
-                            <div className="nav-right">
-                                <Link to='/'><Button>홈</Button></Link>
-                                <Link to='/dashboard'><Button>대시보드</Button></Link>
-                                { user === "" ? 
-                                  <Link to='/login'><Button>로그인</Button></Link>
-                                  : <div className="avatar-outer"><div className="avatar-inner"><Avatar alt="display name" src={user.photoURL}></Avatar><Button onClick={()=>this.logoutHandler()}>로그아웃</Button></div></div>
-                                }
-                                
+            <div className="appbar-outer">
+                <AppBar position="fixed" color="default">
+                    <Toolbar>
+                        <div className="nav-outer">
+                            <div className="nav-inner">
+                                <div className="nav-left">
+                                    <Link to='/'><Button>홈</Button></Link>
+                                </div>
+                                <div className="nav-right">
+                                    <Link to='/dashboard'><Button>대시보드</Button></Link>
+                                    { user === "" ? 
+                                      <Link to='/login'><Button>로그인</Button></Link>
+                                      : <div className="avatar-outer"><div className="avatar-inner"><Avatar alt="display name" src={user.photoURL}></Avatar><Button onClick={()=>this.logoutHandler()}>로그아웃</Button></div></div>
+                                    }
+                                    
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Toolbar>
-            </AppBar>
+                    </Toolbar>
+                </AppBar>
+            </div>
+            
     );
   }
 }

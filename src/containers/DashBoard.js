@@ -14,7 +14,7 @@ class DashBoard extends Component{
           <div>
             <Navbar />
             <div style={{display: "flex"}}>
-              <div style={{maxWidth: "250px", flex: "1 1 auto", height: "100vh - 64px", left: "0", borderRight:"1px solid rgba(0,0,0,0.12)"}}>
+              <div style={{maxWidth: "250px", flex: "1 1 auto", height: "100vh", left: "0", borderRight:"1px solid rgba(0,0,0,0.12)"}}>
                 <List style={{padding: "0"}}>
                   <ListItem button>
                     <ListItemText primary="Inbox" />

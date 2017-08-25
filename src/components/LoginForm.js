@@ -16,7 +16,7 @@ class LoginForm extends Component{
         return(
         <div style={{display: 'inline-block'}}>
            <Button raised color="primary" onClick={()=>this.loginHandler()}>
-               페이스북
+               페이스북으로 로그인
             </Button>
         </div>
         );
