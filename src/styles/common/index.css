@@ -32,21 +32,4 @@
   display: flex;
 }
 
-@media (min-width: 600px){
-    .appbar-outer{
-        min-height: 64px;
-    }    
-}
-
-
-@media (min-width: 0px) and (orientation: landscape){
-    .appbar-outer{
-        min-height: 48px;
-    }    
-}
-
-.appbar-outer{
-    position: relative;
-    min-height: 64px;
-}
     
