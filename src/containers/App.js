@@ -14,6 +14,7 @@ import PublicRoute from '../helpers/PublicRoute';
 import Navbar from '../components/Navbar';
 import LoginForm from '../components/LoginForm';
 import Login from '../pages/Login';
+import Chat from '../pages/Chat';
 import DashBoard from './DashBoard';
 
 /*
@@ -100,6 +101,7 @@ class App extends Component{
                             <PublicRoute component={DashBoard} user={this.props.user} exact path='/' />
                             <Route exact path ='/login' component={Login}/>
                             <PrivateRoute component={DashBoard} user={this.props.user} exact path='/dashboard' />
+                            <PrivateRoute component={Chat} user={this.props.user} exact path='/chat' />
                         </Switch>
                     </div>
                 </BrowserRouter>
