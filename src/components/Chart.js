@@ -24,7 +24,7 @@ class Chart extends Component{
                 water: item.quantity,
                 fromNow: Moment(item.created_at).fromNow()
             }));
-            _.reverse(data);
+            // _.reverse(data);
             var groups = _.groupBy(data, function(item){
                 return item.name;
             });
