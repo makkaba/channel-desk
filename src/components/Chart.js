@@ -28,7 +28,7 @@ class Chart extends Component{
             var groups = _.groupBy(data, function(item){
                 return item.name;
             });
-            var filteredData = _.map(groups, function(value, key){
+            var groupData = _.map(groups, function(value, key){
                 var sum = 0;
                 var fromNow = '';
                 value.forEach(function(cup){
@@ -41,7 +41,7 @@ class Chart extends Component{
                     fromNow: fromNow
                 };
             });
-            this.setState({data: filteredData});
+            this.setState({data: groupData});
         });
     }
     render(){
