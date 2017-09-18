@@ -3,11 +3,10 @@
 ![screenshot](screenshot.png)
 
 ## Table of Contents
-
 - [features](#features)
 - [coming soon](#coming-soon)
 ### features
 * tracking daily water intake(하루 물 섭취량 추적) with bluetooth button [flic](https://flic.io).
-
+* login with firebase auth.
 ### coming soon
 * chatting plugin with JavaScript SDK(채팅 관리 대시보드)
